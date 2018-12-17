@@ -1,0 +1,5 @@
+.jumbotron {
+  background-image: url("../../img/space.png");
+  background-size: cover;
+  color: yellow;
+}

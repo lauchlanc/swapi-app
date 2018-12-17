@@ -8,8 +8,14 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-export default class Example extends Component {
+export type Props = {};
+export type State = {
+  isOpen: boolean,
+};
+
+export default class Example extends Component<Props, State> {
   constructor(props) {
     super(props);
 
@@ -30,15 +36,15 @@ export default class Example extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="sm" className="mb-5">
-          <NavbarBrand href="/">SWAPI App</NavbarBrand>
+          <NavbarBrand tag={Link} to="/">SWAPI App</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/play/">Play</NavLink>
+                <NavLink tag={Link} to="/play">Play</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/scores/">Scores</NavLink>
+                <NavLink tag={Link} to="/scores">Scores</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/lauchlanc/swapi-app">GitHub</NavLink>

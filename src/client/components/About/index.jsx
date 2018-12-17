@@ -4,7 +4,9 @@ import {
   Jumbotron,
   Button,
 } from 'reactstrap';
+import './About.css';
 import api from '../../api';
+import { Link } from 'react-router-dom';
 
 export type Props = {};
 export type State = {
@@ -34,7 +36,7 @@ export default class About extends React.Component<Props, State> {
           <hr className="my-2" />
           <p>To play the game, click "Play" below</p>
           <p className="lead">
-            <Button color="primary">Play</Button>
+            <Button color="primary" tag={Link} to="/play">Play</Button>
           </p>
         </Jumbotron>
       </Container>
