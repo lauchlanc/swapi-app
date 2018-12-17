@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Message from './components/message';
+import About from './components/About';
+import AppNavbar from './components/AppNavbar';
 
 export type Props = {};
 
@@ -10,9 +11,9 @@ class App extends Component<Props> {
   render() {
     return (
       <div className="App">
+        <AppNavbar />
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Message />
+          <About />
         </header>
       </div>
     );

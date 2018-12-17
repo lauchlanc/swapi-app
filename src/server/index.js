@@ -5,21 +5,29 @@ import express, {
 } from 'express';
 import path from 'path';
 
-import { type Message } from 'shared/types';
+import { type Message, type About } from 'shared/types';
 
 
 const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
-  : 8080;
+  : 5000;
 
 const app: $Application = express();
 
 app.get('/api/message', (req: $Request, res: $Response): void => {
   const message: Message = {
-    message: 'Backend up!',
+    message: 'Bookend up!',
   };
 
   res.json(message);
+})
+
+app.get('/api/about', (req: $Request, res: $Response): void => {
+  const about: About = {
+    about: 'This is a sample app that uses the Star Wars API (SWAPI), with React to play a simple guessing game!',
+  };
+
+  res.json(about);
 })
 
 app.use(express.static(
