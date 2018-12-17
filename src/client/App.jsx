@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Message from './components/message';
 
-type Props = {
-  foo: number
-};
+export type Props = {};
 
 class App extends Component<Props> {
   render() {
@@ -13,9 +12,7 @@ class App extends Component<Props> {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            The answer is {this.props.foo}
-          </p>
+          <Message />
         </header>
       </div>
     );

@@ -8,7 +8,7 @@ import * as serviceWorker from './client/serviceWorker';
 const root: ?Element = document.getElementById('root');
 
 if(root){
-  ReactDOM.render(<App foo={43} />, root);
+  ReactDOM.render(<App />, root);
 }
 
 // If you want your app to work offline and load faster, you can change
