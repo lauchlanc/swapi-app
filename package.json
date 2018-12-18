@@ -41,7 +41,8 @@
     "serve": "pm2-runtime start production.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "heroku-postbuild": "yarn serve"
   },
   "eslintConfig": {
     "extends": "react-app"

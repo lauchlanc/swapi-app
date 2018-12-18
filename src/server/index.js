@@ -13,7 +13,7 @@ import scores from './routes/api/scores';
 
 const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
-  : 5000;
+  : 8080;
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
