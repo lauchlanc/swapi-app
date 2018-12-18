@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
   Collapse,
@@ -15,8 +16,8 @@ export type State = {
   isOpen: boolean,
 };
 
-export default class Example extends Component<Props, State> {
-  constructor(props) {
+export default class AppNavbar extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
@@ -24,6 +25,8 @@ export default class Example extends Component<Props, State> {
       isOpen: false,
     };
   }
+
+  toggle: Function;
 
   toggle() {
     this.setState(prevState => ({
