@@ -41,8 +41,7 @@
     "serve": "pm2-runtime start production.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flow": "flow",
-    "postinstall": "npm-run-all --parallel build serve"
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"
