@@ -7,6 +7,6 @@ The following commands will install the app and get it running on Port 3000.
 ```
 git clone https://github.com/lauchlanc/swapi-app.git
 cd swapi-app
-yarn
-yarn start
+yarn build
+yarn serve
 ```
