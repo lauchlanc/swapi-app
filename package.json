@@ -42,7 +42,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "postinstall": "yarn build && yarn serve"
+    "postinstall": "npm-run-all --parallel build serve"
   },
   "eslintConfig": {
     "extends": "react-app"
