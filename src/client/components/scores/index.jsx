@@ -3,6 +3,7 @@ import {
   Table,
   Container
  } from 'reactstrap';
+import Score from '../score';
 
 export type Props = {};
 export type State = {
@@ -10,7 +11,35 @@ export type State = {
 };
 
 export default class Scores extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      scores: []
+    };
+
+    this.eachScore = this.eachScore.bind(this);
+  }
+
+  async componentDidMount() {
+    fetch(`http://localhost:5000/api/scores/`)
+      .then(response => response.json())
+      .then(scores => {
+        this.setState({
+          scores: scores
+        })
+      })
+  }
+
+  eachScore(score, i) {
+    return (
+      <Score score={score}
+               key={i}
+               />
+    )
+  }
+
   render() {
+    const { scores } = this.state;
     return (
       <Container>
         <Table dark>
@@ -21,10 +50,7 @@ export default class Scores extends Component<Props, State> {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>2</td>
-              <td>Lauchie</td>
-            </tr>
+            {scores.map(this.eachScore)}
           </tbody>
         </Table>
       </Container>
