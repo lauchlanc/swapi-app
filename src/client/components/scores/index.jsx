@@ -21,6 +21,7 @@ export default class Scores extends Component<Props, State> {
     };
 
     this.eachScore = this.eachScore.bind(this);
+    this.getScores = this.getScores.bind(this);
   }
 
   async componentDidMount() {
@@ -28,18 +29,22 @@ export default class Scores extends Component<Props, State> {
         loading: true,
     });
 
-    fetch(`http://localhost:5000/api/scores/`)
+    const scores = await this.getScores();
+
+    this.setState({
+        scores: scores,
+        loading: false,
+    })
+  }
+
+  async getScores() {
+    return fetch(`http://localhost:5000/api/scores/`)
       .then(response => response.json())
       .then(scores => {
-        this.setState({
-          scores: scores,
-          loading: false,
-        })
+        return scores;
       })
       .catch(e => {
-        this.setState({
-          loading: false,
-        })
+        return [];
       })
   }
 
