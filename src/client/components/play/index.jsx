@@ -13,7 +13,6 @@ import {
   Alert,
   Button,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import swapi from '../../swapi';
 
 export type Props = {};
@@ -51,10 +50,17 @@ export default class Play extends React.Component<Props, State> {
   }
 
   checkGuess(e) {
+    const correct = e.target.value.toLowerCase() === this.state.person.name.toLowerCase();
     this.setState({
-      guessCorrect: (e.target.value.toLowerCase() === this.state.person.name.toLowerCase()) ? 1 : 0,
+      guessCorrect: (correct) ? 1 : 0,
       guess: e.target.value,
     });
+    if(correct){
+      fetch(`http://localhost:5000/api/scores/${this.state.person.name}`,
+        {
+          method: "PUT",
+        })
+    }
   }
 
   getAlert() {

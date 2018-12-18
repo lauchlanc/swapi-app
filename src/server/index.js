@@ -4,23 +4,28 @@ import express, {
   type $Response,
 } from 'express';
 import path from 'path';
-
-import { type Message, type About } from 'shared/types';
-
+import cors from 'cors';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import { type About } from 'shared/types';
+import { mongoURI } from './config/keys';
+import scores from './routes/api/scores';
 
 const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
   : 5000;
 
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true })
+  .then(() => console.log('Mongo Connected'))
+  .catch((e) => console.log(e));
+
 const app: $Application = express();
 
-app.get('/api/message', (req: $Request, res: $Response): void => {
-  const message: Message = {
-    message: 'Bookend up!',
-  };
-
-  res.json(message);
-})
+app.use(express.static(
+  path.join(__dirname, '..', '..', 'build'),
+  { index : false }
+));
 
 app.get('/api/about', (req: $Request, res: $Response): void => {
   const about: About = {
@@ -30,10 +35,7 @@ app.get('/api/about', (req: $Request, res: $Response): void => {
   res.json(about);
 })
 
-app.use(express.static(
-  path.join(__dirname, '..', '..', 'build'),
-  { index : false }
-));
+app.use('/api/scores', cors(), scores);
 
 app.get('*', (req: $Request, res: $Response) => {
   res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
