@@ -14,12 +14,14 @@ import {
   Button,
 } from 'reactstrap';
 import swapi from '../../swapi';
+import Loader from '../loader';
 
 export type Props = {};
 export type State = {
   person: Person,
   guessCorrect: number,
   guess: string,
+  loading: boolean,
 };
 
 export default class Play extends React.Component<Props, State> {
@@ -29,6 +31,7 @@ export default class Play extends React.Component<Props, State> {
       person: {},
       guessCorrect: -1,
       guess: "",
+      loading: false,
     };
 
     this.checkGuess = this.checkGuess.bind(this);
@@ -42,10 +45,14 @@ export default class Play extends React.Component<Props, State> {
   }
 
   async getNextPerson() {
+    this.setState({
+      loading: true,
+    })
     const response = await swapi.getGamePerson();
 
     this.setState({
       person: response,
+      loading: false,
     });
   }
 
@@ -82,9 +89,10 @@ export default class Play extends React.Component<Props, State> {
   }
 
   render() {
-    const { person } = this.state;
+    const { person, loading } = this.state;
     return (
       <Container fluid>
+        <Loader display={loading} />
         <Row>
           <Col sm="12" md={{ size: 8, offset: 2 }}>
             <h2>Let's play a guessing game</h2>

@@ -4,28 +4,41 @@ import {
   Container
  } from 'reactstrap';
 import Score from '../score';
+import Loader from '../loader'
 
 export type Props = {};
 export type State = {
   scores: array,
+  loading: boolean,
 };
 
 export default class Scores extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      scores: []
+      scores: [],
+      loading: false,
     };
 
     this.eachScore = this.eachScore.bind(this);
   }
 
   async componentDidMount() {
+    this.setState({
+        loading: true,
+    });
+
     fetch(`http://localhost:5000/api/scores/`)
       .then(response => response.json())
       .then(scores => {
         this.setState({
-          scores: scores
+          scores: scores,
+          loading: false,
+        })
+      })
+      .catch(e => {
+        this.setState({
+          loading: false,
         })
       })
   }
@@ -39,9 +52,10 @@ export default class Scores extends Component<Props, State> {
   }
 
   render() {
-    const { scores } = this.state;
+    const { scores, loading } = this.state;
     return (
-      <Container>
+      <Container className="pb-5">
+        <Loader display={loading} />
         <Table dark>
           <thead>
             <tr>
