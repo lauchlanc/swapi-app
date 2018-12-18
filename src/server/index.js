@@ -17,7 +17,6 @@ const PORT: number = process.env.PORT != null
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
-  .then(() => console.log('Mongo Connected'))
   .catch((e) => console.log(e));
 
 const app: $Application = express();
