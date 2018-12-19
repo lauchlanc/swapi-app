@@ -11,11 +11,9 @@ import { type About } from 'shared/types';
 import { mongoURI } from './config/keys';
 import scores from './routes/api/scores';
 
-const PORT: number = process.env.PORT != null
+export const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
   : 8080;
-
-export PORT;
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
