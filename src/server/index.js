@@ -15,6 +15,8 @@ const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
   : 8080;
 
+export PORT;
+
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
   .catch((e) => console.log(e));
