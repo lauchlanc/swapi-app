@@ -11,7 +11,7 @@ import { type About } from 'shared/types';
 import { mongoURI } from './config/keys';
 import scores from './routes/api/scores';
 
-export const PORT: number = process.env.PORT != null
+const PORT: number = process.env.PORT != null
   ? parseInt(process.env.PORT, 10)
   : 8080;
 
