@@ -31,7 +31,8 @@
     "reactstrap": "^6.5.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start-client start-server",
+    "start": "node dist/server/index.js",
+    "dev": "npm-run-all --parallel start-client start-server",
     "start-client": "flow && react-scripts start",
     "start-server": "flow && pm2-dev start development.config.js",
     "build": "npm-run-all build-client build-server",
