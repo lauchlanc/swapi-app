@@ -38,7 +38,7 @@ export default class Scores extends Component<Props, State> {
   }
 
   async getScores() {
-    return fetch(`http://localhost:5000/api/scores/`)
+    return fetch(`/api/scores/`)
       .then(response => response.json())
       .then(scores => {
         return scores;
