@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'swapi-app',
-    script: './src/server/index.js',
+    script: './server.js',
     interpreter: 'babel-node',
     interpreter_args: '--presets env,flow',
     ignore_watch: [
@@ -9,7 +9,7 @@ module.exports = {
       'public',
     ],
     env: {
-      NODE_PATH: 'src/',
+      NODE_PATH: '/',
       NODE_ENV: 'development',
     },
   }],

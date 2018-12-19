@@ -63,7 +63,7 @@ export default class Play extends React.Component<Props, State> {
       guess: e.target.value,
     });
     if(correct){
-      fetch(`http://localhost:5000/api/scores/${this.state.person.name}`,
+      fetch(`/api/scores/${this.state.person.name}`,
         {
           method: "PUT",
         })

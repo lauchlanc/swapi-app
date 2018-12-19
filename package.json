@@ -28,16 +28,16 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-transition-group": "^2.5.1",
-    "reactstrap": "^6.5.0",
-    "swapi-node": "^0.4.4"
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start-client start-server",
+    "dev": "npm-run-all --parallel start-client start-server",
+    "start": "pm2-runtime start production.config.js",
     "start-client": "flow && react-scripts start",
     "start-server": "flow && pm2-dev start development.config.js",
     "build": "npm-run-all build-client build-server",
     "build-client": "react-scripts build",
-    "build-server": "babel src/ --ignore src/client,src/index.js -d dist",
+    "build-server": "babel ./ --ignore src/,node_modules/,public/,flow-typed/,dist/,build/,.git/ -d dist",
     "serve": "pm2-runtime start production.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
