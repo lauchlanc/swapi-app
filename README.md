@@ -1,6 +1,6 @@
 # swapi-app
 
-Single-Page React App using the Star Wars API
+Single-Page React App using the Star Wars API. Will be hosting on heroku.
 
 ## Install
 The following commands will install the app and get it running on Port 8080.
