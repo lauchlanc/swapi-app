@@ -22,7 +22,7 @@ mongoose
 const app: $Application = express();
 
 app.use(express.static(
-  path.join(__dirname, 'build'),
+  path.join(__dirname, '..', 'build'),
   { index : false }
 ));
 
@@ -31,7 +31,7 @@ app.use('/api/scores', cors(), scores);
 // serve static assets if in production
 if(process.env.NODE_ENV === 'production') {
   app.get('*', (req: $Request, res: $Response) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
   });
 }
 
