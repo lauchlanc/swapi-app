@@ -31,7 +31,7 @@
     "reactstrap": "^6.5.0"
   },
   "scripts": {
-    "start": "node dist/server/index.js",
+    "start": "pm2-runtime start production.config.js",
     "dev": "npm-run-all --parallel start-client start-server",
     "start-client": "flow && react-scripts start",
     "start-server": "flow && pm2-dev start development.config.js",
