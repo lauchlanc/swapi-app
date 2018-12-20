@@ -38,7 +38,10 @@ export default class Scores extends Component<Props, State> {
   }
 
   async getScores() {
-    return fetch(`/api/scores/`)
+    return fetch(`/api/scores/`,
+    {
+      mode: "cors"
+    })
       .then(response => response.json())
       .then(scores => {
         return scores;

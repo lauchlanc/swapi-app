@@ -26,7 +26,9 @@ app.use(express.static(
   { index : false }
 ));
 
-app.use('/api/scores', cors(), scores);
+app.options('*', cors())
+
+app.use('/api/scores', scores);
 
 // serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

@@ -66,6 +66,10 @@ export default class Play extends React.Component<Props, State> {
       fetch(`/api/scores/${this.state.person.name}`,
         {
           method: "PUT",
+          mode: "cors",
+          headers: new Headers({
+            'Content-Type': 'application/json'
+          })
         })
     }
   }
